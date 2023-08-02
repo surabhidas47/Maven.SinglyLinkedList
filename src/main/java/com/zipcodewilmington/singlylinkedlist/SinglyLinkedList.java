@@ -14,6 +14,8 @@ public class SinglyLinkedList <T> implements LinkedListIface{
 
     //adding this bc a common method for collections
     public Boolean isEmpty(){
+
+        //we know that not empty bc will return null
         return head == null;
     }
     public SinglyLinkedList(){
@@ -86,17 +88,46 @@ public class SinglyLinkedList <T> implements LinkedListIface{
 
     @Override
     public boolean contains(Object data) {
-        return false;
+        return (this.find(data)!= 1);
+
+       // return false;
     }
 
     @Override
+
     public int find(Object data) {
-        return 0;
+
+        if (this.isEmpty())return -1;
+        int found = -1;
+
+        //this is actually getting the node of the obj, both temp and head are of type node
+        Node <T> temp = head;
+        do{
+            found++;
+            //if data we get is found we return found (which is 0)
+            if(temp.getData().equals(data))return found ;
+            temp =temp.getNext();
+
+        }while (temp != null);
+
+        //if it was never found in the loop back to -1
+        return -1;
     }
 
     @Override
     public int size() {
-        return 0;
+
+        if (this.isEmpty())return 0;
+        int n =0;
+        Node <T> temp = head;
+        do {
+            //we start at the next, check temp(ABC from image example) if it is equal to null,
+            // if not we add to the counter and we should get 4 from the example when we reach the end
+            n++;
+            temp =temp.getNext();
+
+            }while (temp != null);
+        return n;
     }
 
     @Override
