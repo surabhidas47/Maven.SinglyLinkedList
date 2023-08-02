@@ -88,7 +88,7 @@ public class SinglyLinkedList <T> implements LinkedListIface{
 
     @Override
     public boolean contains(Object data) {
-        return (this.find(data)!= 1);
+        return (this.find(data)!= -1);
 
        // return false;
     }
